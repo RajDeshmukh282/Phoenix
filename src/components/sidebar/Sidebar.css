@@ -6,17 +6,32 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #c7c7c7;
   padding: 20px 16px;
   font-family: 'Inter', sans-serif;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+  overflow: hidden;
   border-right: 1px solid #e0e0e0;
   color: #333;
+  
+  /* 🖼️ Background image styling */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode:screen;
+  background-color: rgba(255, 255, 255, 0.85); /* optional overlay */
+  position: relative;
+}
+
+.Sidebar.closed {
+  width: 60px;
+  padding: 20px 10px;
 }
 
 .Sidebar img {
   width: 22px;
   filter: grayscale(1);
   transition: transform 0.2s ease;
+  cursor: pointer;
 }
 .Sidebar img:hover {
   transform: scale(1.05);
@@ -26,6 +41,10 @@
   margin-left: 10px;
   cursor: pointer;
   color: #555;
+  transition: transform 0.2s ease;
+}
+.Sidebar .menu:hover {
+  transform: scale(1.1);
 }
 
 .Sidebar .new-chat {
@@ -40,16 +59,20 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  
+  transition: background-color 0.3s, color 0.3s ease;
+  opacity: 1;
+  animation: fadeIn 0.4s ease;
 }
 .Sidebar .new-chat:hover {
   color: rgb(194, 94, 12);
+  background-color: #e2e2e2;
 }
 
 .Sidebar .recent {
   display: flex;
   flex-direction: column;
   margin-top: 30px;
+  animation: slideUp 0.4s ease;
 }
 
 .Sidebar .recent-title {
@@ -59,6 +82,7 @@
   font-weight: 600;
   margin-bottom: 12px;
   letter-spacing: 0.5px;
+  transition: color 0.3s ease;
 }
 
 .Sidebar .recent-entry {
@@ -71,11 +95,13 @@
   color: #333;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s;
+  animation: fadeIn 0.4s ease;
 }
 .Sidebar .recent-entry:hover {
   background-color: #f0f0f0;
   color: rgb(194, 94, 12);
+  transform: scale(1.02);
 }
 
 .Sidebar .bottom {
@@ -85,4 +111,35 @@
   margin-top: 40px;
   padding-top: 15px;
   border-top: 1px solid #e0e0e0;
+  animation: slideUp 0.4s ease;
+}
+
+.Sidebar.closed .new-chat,
+.Sidebar.closed .recent,
+.Sidebar.closed .bottom {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
