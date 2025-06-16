@@ -5,7 +5,7 @@ const Main = () => {
   return (
     <div className="main">
         <div className="nav">
-            <p>Pheonix</p>
+            <img src={assets.phnx_logo} alt="" />
             <img src={assets.user_icon} alt="user_icon " />
         </div>
         <div className='main-container'>
