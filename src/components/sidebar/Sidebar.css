@@ -3,6 +3,17 @@
     display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #d0f0f6
-    ;
+    background-color: #c1bfbf;
+    padding: 20px 15px;
+    
+}
+
+.Sidebar img{
+    width: 20px;
+
+}
+.Sidebar .menu{
+    display: block;
+    margin-left: 10px  ;
+    cursor: pointer;
 }
