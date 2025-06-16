@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #e3e2df;
+  background-color: #c7c7c7;
   padding: 20px 16px;
   font-family: 'Inter', sans-serif;
   border-right: 1px solid #e0e0e0;
@@ -29,7 +29,7 @@
 }
 
 .Sidebar .new-chat {
-  margin-top: 20px;
+  margin-top: 50px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -40,10 +40,10 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  
 }
 .Sidebar .new-chat:hover {
-  background-color: #e0e0e0;
+  color: rgb(194, 94, 12);
 }
 
 .Sidebar .recent {
@@ -75,6 +75,7 @@
 }
 .Sidebar .recent-entry:hover {
   background-color: #f0f0f0;
+  color: rgb(194, 94, 12);
 }
 
 .Sidebar .bottom {
