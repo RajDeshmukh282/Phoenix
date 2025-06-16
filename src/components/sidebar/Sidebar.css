@@ -1,19 +1,87 @@
-.Sidebar{
-    min-height: 100vh;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #c1bfbf;
-    padding: 20px 15px;
-    
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+.Sidebar {
+  min-height: 100vh;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #e3e2df;
+  padding: 20px 16px;
+  font-family: 'Inter', sans-serif;
+  border-right: 1px solid #e0e0e0;
+  color: #333;
 }
 
-.Sidebar img{
-    width: 20px;
-
+.Sidebar img {
+  width: 22px;
+  filter: grayscale(1);
+  transition: transform 0.2s ease;
 }
-.Sidebar .menu{
-    display: block;
-    margin-left: 10px  ;
-    cursor: pointer;
+.Sidebar img:hover {
+  transform: scale(1.05);
+}
+
+.Sidebar .menu {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #555;
+}
+
+.Sidebar .new-chat {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background-color: #eeeeee;
+  border-radius: 8px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.Sidebar .new-chat:hover {
+  background-color: #e0e0e0;
+}
+
+.Sidebar .recent {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.Sidebar .recent-title {
+  font-size: 13px;
+  color: #888;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.Sidebar .recent-entry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.Sidebar .recent-entry:hover {
+  background-color: #f0f0f0;
+}
+
+.Sidebar .bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
 }
