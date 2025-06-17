@@ -1,4 +1,9 @@
-# 🔥 Phoenix AI Chat App
+# Add Your own API KEY IN gemini.js file 
+you can get that free key from google gemini just replace it and run this cmd-->
+
+npm install @google/generative-ai
+
+🔥 Phoenix AI Chat App
 
 Phoenix is a sleek, responsive, and powerful AI-powered chat application built with **React + Vite** and integrated with **Google Gemini API** to deliver fast and intelligent responses. The interface is optimized for an engaging user experience with smooth animations and custom design elements.
 
