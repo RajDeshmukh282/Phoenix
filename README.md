@@ -1,12 +1,28 @@
-# React + Vite
+# 🔥 Phoenix AI Chat App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Phoenix is a sleek, responsive, and powerful AI-powered chat application built with **React + Vite** and integrated with **Google Gemini API** to deliver fast and intelligent responses. The interface is optimized for an engaging user experience with smooth animations and custom design elements.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔮 Real-time AI chat responses using Gemini API
+- ⚡ Blazing fast performance with Vite
+- 🎨 Elegant and responsive UI with custom cards and alert effects
+- 🧠 Gemini loader animation and interaction flow
+- 💬 "Coming Soon" alerts for future features
+- 📱 Fully responsive for desktop and mobile use
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React (with Hooks and Context API)
+- **Build Tool**: Vite
+- **Styling**: Custom CSS
+- **AI Integration**: Gemini API by Google
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/RajDeshmukh282/Phoenix.git
+cd Phoenix
+
