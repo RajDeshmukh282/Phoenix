@@ -1,8 +1,25 @@
 import React from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
+import { context } from "../../context/context";
+import { useContext } from "react";
 
 const Main = () => {
+  const {
+    input,
+    setinput,
+    recentprompts,
+    setrecentprompts,
+    previousprompts,
+    setpreviousprompts,
+    showresult,
+    setshowresult,
+    loading,    
+    setloading,
+    resultdata,
+    setresultdata,
+    onsent,
+  } = useContext(context);
   return (
     <div className="main">
       <div className="nav">
@@ -11,6 +28,7 @@ const Main = () => {
       </div>
 
       <div className="main-container">
+        {!showresult?<>
         <div className="greet">
           <p>
             <span>Hello, Raj</span>
@@ -37,26 +55,36 @@ const Main = () => {
           </div>
         </div>
 
+        </>:<div className="result">
+          <p>{resultdata}</p>
+        </div>
+        }
+        
+
         <div className="main-bottom">
           <div className="search-box">
-            <input type="text" placeholder="Enter your prompt..." />
+            <input
+              onChange={(e) => setinput(e.target.value)}
+              value={input}
+              type="text"
+              placeholder="Enter your prompt..."
+            />
             <div>
               <img src={assets.gallery_icon} alt="gallery" />
               <img src={assets.mic_icon} alt="mic" />
-              <img src={assets.send_icon} alt="send" />
+              <img onClick={() => onsent()} src={assets.send_icon} alt="send" />
             </div>
           </div>
 
           <div className="bottom-info">
             <p>
-              ⚠️ <strong>Phoenix</strong> might generate incorrect or biased responses.
-              Always double-check critical information.
+              ⚠️ <strong>Phoenix</strong> might generate incorrect or biased
+              responses. Always double-check critical information.
             </p>
+            <p>🔐 Your data stays private. Phoenix doesn’t store your chats.</p>
             <p>
-              🔐 Your data stays private. Phoenix doesn’t store your chats.
-            </p>
-            <p>
-              💡 Use Phoenix responsibly — it's a creative assistant, not a human expert.
+              💡 Use Phoenix responsibly — it's a creative assistant, not a
+              human expert.
             </p>
           </div>
         </div>

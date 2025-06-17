@@ -43,6 +43,7 @@ async function runChat(prompt) {
   const result = await chat.sendMessage(prompt); // Replace with actual input
   const response = result.response;
   console.log(response.text());
+  return response.text(); // Return the response text
 }
 
 export default runChat;
