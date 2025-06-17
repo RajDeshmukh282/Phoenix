@@ -9,7 +9,7 @@ const Main = () => {
     setinput,
     recentprompts,
     showresult,
-    loading,
+    loading,  
     resultdata,
     onsent,
   } = useContext(context);
@@ -59,7 +59,7 @@ const Main = () => {
             <div className="result-data">
   <img src={assets.gemini_icon} alt="gemini" />
   {loading ? (
-    <div className="gemini-loader">
+    <div className="loader-pulse">
       <span></span>
       <span></span>
       <span></span>
