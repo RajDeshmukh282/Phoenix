@@ -154,4 +154,69 @@ margin: 0 auto;
 .bottom-info p {
   margin: 6px 0;
 }
- 
+ .result{
+  padding: 0px 5%;
+  max-height: 70vh;
+  overflow-y: scroll;
+ }
+ .result::-webkit-scrollbar {
+  display: none;}
+
+  .result-title{
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .result img{
+    width: 34px;
+    height:34px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border-radius: 100%;
+  }
+  .result-data{
+    display: flex;
+    
+    align-items: start;
+    gap: 20px;
+  } 
+.gemini-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  gap: 10px;
+}
+
+.gemini-loader span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #0899e1 40%, #0d82db 100%);
+  box-shadow: 0 0 8px #00b7ffaa;
+  border-radius: 50%;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+
+.gemini-loader span:nth-child(1) {
+  animation-delay: -0.24s;
+}
+.gemini-loader span:nth-child(2) {
+  animation-delay: -0.12s;
+}
+.gemini-loader span:nth-child(3) {
+  animation-delay: 0s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  40% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+}

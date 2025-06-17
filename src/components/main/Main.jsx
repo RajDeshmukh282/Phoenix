@@ -14,7 +14,7 @@ const Main = () => {
     setpreviousprompts,
     showresult,
     setshowresult,
-    loading,    
+    loading,
     setloading,
     resultdata,
     setresultdata,
@@ -28,38 +28,54 @@ const Main = () => {
       </div>
 
       <div className="main-container">
-        {!showresult?<>
-        <div className="greet">
-          <p>
-            <span>Hello, Raj</span>
-          </p>
-          <p>What can I spark for you today?</p>
-        </div>
+        {!showresult ? (
+          <>
+            <div className="greet">
+              <p>
+                <span>Hello, Raj</span>
+              </p>
+              <p>What can I spark for you today?</p>
+            </div>
 
-        <div className="cards">
-          <div className="card">
-            <p>Take me on a tour, Phoenix</p>
-            <img src={assets.compass_icon} alt="" />
+            <div className="cards">
+              <div className="card">
+                <p>Take me on a tour, Phoenix</p>
+                <img src={assets.compass_icon} alt="" />
+              </div>
+              <div className="card">
+                <p>Inspire me with something cool</p>
+                <img src={assets.bulb_icon} alt="" />
+              </div>
+              <div className="card">
+                <p>What can I build with AI?</p>
+                <img src={assets.message_icon} alt="" />
+              </div>
+              <div className="card">
+                <p>Show me how Phoenix codes</p>
+                <img src={assets.code_icon} alt="" />
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="result">
+            <div className="result-title">
+              <img src={assets.user_icon} alt="" />
+              <p>{recentprompts}</p>
+            </div>
+            <div className="result-data">
+              {loading ? (
+                <div className="gemini-loader">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              ) : (
+                <p dangerouslySetInnerHTML={{ __html: resultdata }}></p>
+              )}
+              <img src={assets.gemini_icon} alt="" />
+            </div>
           </div>
-          <div className="card">
-            <p>Inspire me with something cool</p>
-            <img src={assets.bulb_icon} alt="" />
-          </div>
-          <div className="card">
-            <p>What can I build with AI?</p>
-            <img src={assets.message_icon} alt="" />
-          </div>
-          <div className="card">
-            <p>Show me how Phoenix codes</p>
-            <img src={assets.code_icon} alt="" />
-          </div>
-        </div>
-
-        </>:<div className="result">
-          <p>{resultdata}</p>
-        </div>
-        }
-        
+        )}
 
         <div className="main-bottom">
           <div className="search-box">
