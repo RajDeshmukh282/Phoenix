@@ -1,29 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
 import { context } from "../../context/context";
-import { useContext } from "react";
 
 const Main = () => {
   const {
     input,
     setinput,
     recentprompts,
-    setrecentprompts,
-    previousprompts,
-    setpreviousprompts,
     showresult,
-    setshowresult,
     loading,
-    setloading,
     resultdata,
-    setresultdata,
     onsent,
   } = useContext(context);
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && input.trim()) {
+      onsent();
+    }
+  };
+
   return (
     <div className="main">
       <div className="nav">
-        {/* <img id="phnx-logo" src={assets.phnx_logo} alt="" /> */}
         <img src={assets.user_icon} alt="user_icon" />
       </div>
 
@@ -38,22 +37,17 @@ const Main = () => {
             </div>
 
             <div className="cards">
-              <div className="card">
-                <p>Take me on a tour, Phoenix</p>
-                <img src={assets.compass_icon} alt="" />
-              </div>
-              <div className="card">
-                <p>Inspire me with something cool</p>
-                <img src={assets.bulb_icon} alt="" />
-              </div>
-              <div className="card">
-                <p>What can I build with AI?</p>
-                <img src={assets.message_icon} alt="" />
-              </div>
-              <div className="card">
-                <p>Show me how Phoenix codes</p>
-                <img src={assets.code_icon} alt="" />
-              </div>
+              {[
+                ["Take me on a tour, Phoenix", assets.compass_icon],
+                ["Inspire me with something cool", assets.bulb_icon],
+                ["What can I build with AI?", assets.message_icon],
+                ["Show me how Phoenix codes", assets.code_icon],
+              ].map(([text, icon], i) => (
+                <div className="card" key={i}>
+                  <p>{text}</p>
+                  <img src={icon} alt="icon" />
+                </div>
+              ))}
             </div>
           </>
         ) : (
@@ -72,7 +66,7 @@ const Main = () => {
               ) : (
                 <p dangerouslySetInnerHTML={{ __html: resultdata }}></p>
               )}
-              <img src={assets.gemini_icon} alt="" />
+              <img src={assets.gemini_icon} alt="gemini" />
             </div>
           </div>
         )}
@@ -80,28 +74,23 @@ const Main = () => {
         <div className="main-bottom">
           <div className="search-box">
             <input
-              onChange={(e) => setinput(e.target.value)}
-              value={input}
               type="text"
               placeholder="Enter your prompt..."
+              value={input}
+              onChange={(e) => setinput(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
             <div>
               <img src={assets.gallery_icon} alt="gallery" />
               <img src={assets.mic_icon} alt="mic" />
-              <img onClick={() => onsent()} src={assets.send_icon} alt="send" />
+              <img src={assets.send_icon} alt="send" onClick={() => input.trim() && onsent()} />
             </div>
           </div>
 
           <div className="bottom-info">
-            <p>
-              ⚠️ <strong>Phoenix</strong> might generate incorrect or biased
-              responses. Always double-check critical information.
-            </p>
+            <p>⚠️ <strong>Phoenix</strong> may generate inaccurate or biased info. Verify critical facts.</p>
             <p>🔐 Your data stays private. Phoenix doesn’t store your chats.</p>
-            <p>
-              💡 Use Phoenix responsibly — it's a creative assistant, not a
-              human expert.
-            </p>
+            <p>💡 Use Phoenix responsibly — it's your assistant, not a human expert.</p>
           </div>
         </div>
       </div>

@@ -11,71 +11,73 @@ const ContextProvider = (props) => {
   const [loading, setloading] = useState(false);
   const [resultdata, setresultdata] = useState("");
 
-  const delayPara = (index, nextWord) => {
-    setTimeout(() => {
-      setresultdata((prev) => prev + nextWord);
-    }, 75 * index);
+  const delayWords = async (words) => {
+    for (let i = 0; i < words.length; i++) {
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      setresultdata((prev) => prev + words[i] + " ");
+    }
   };
-  const newchat =() => {
-    setloading(false);
+
+  const newchat = () => {
+    setinput("");
+    setresultdata("");
     setshowresult(false);
-  }
+    setloading(false);
+  };
 
   const onsent = async (prompt) => {
-    setresultdata("");
-    setloading(true);
-    setshowresult(true);
+    try {
+      setloading(true);
+      setshowresult(true);
+      setresultdata("");
 
-    let usedPrompt = prompt !== undefined ? prompt : input;
+      const usedPrompt = prompt !== undefined ? prompt : input;
+      setrecentprompts(usedPrompt);
 
-    // Save to previous prompts only if it's a new input
-    setrecentprompts(usedPrompt);
-    setpreviousprompts((prev) => [...prev, usedPrompt]);
+      setpreviousprompts((prev) =>
+        prev.includes(usedPrompt) ? prev : [...prev, usedPrompt]
+      );
 
-    const response = await runChat(usedPrompt);
+      const response = await runChat(usedPrompt);
 
-    // Format response
-    let responseArray = response.split("**");
-    let newResponse = "";
-    for (let i = 0; i < responseArray.length; i++) {
-      if (i === 0 || i % 2 !== 1) {
-        newResponse += responseArray[i];
-      } else {
-        newResponse += "<b>" + responseArray[i] + "</b>";
-      }
+      // Format bold and breaks
+      const formatted = response
+        .split("**")
+        .map((seg, i) => (i % 2 === 1 ? `<b>${seg}</b>` : seg))
+        .join("")
+        .split("*").join("<br>");
+
+      const sanitized = formatted.replace(/<script.*?>.*?<\/script>/gi, "");
+      const wordArray = sanitized.split(" ");
+      delayWords(wordArray);
+    } catch (error) {
+      setresultdata("❌ Failed to get response. Try again.");
+      console.error("Error:", error);
+    } finally {
+      setloading(false);
+      setinput("");
     }
-
-    let newResponse2 = newResponse.split("*").join("</br>");
-    let newResponseArray = newResponse2.split(" ");
-
-    for (let i = 0; i < newResponseArray.length; i++) {
-      const nextWord = newResponseArray[i];
-      delayPara(i, nextWord + " ");
-    }
-
-    setloading(false);
-    setinput("");
-  };
-
-  const contextValue = {
-    input,
-    setinput,
-    recentprompts,
-    setrecentprompts,
-    previousprompts,
-    setpreviousprompts,
-    showresult,
-    setshowresult,
-    loading,
-    setloading,
-    resultdata,
-    setresultdata,
-    newchat,
-    onsent,
   };
 
   return (
-    <context.Provider value={contextValue}>
+    <context.Provider
+      value={{
+        input,
+        setinput,
+        recentprompts,
+        setrecentprompts,
+        previousprompts,
+        setpreviousprompts,
+        showresult,
+        setshowresult,
+        loading,
+        setloading,
+        resultdata,
+        setresultdata,
+        newchat,
+        onsent,
+      }}
+    >
       {props.children}
     </context.Provider>
   );
