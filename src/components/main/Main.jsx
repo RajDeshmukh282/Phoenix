@@ -59,7 +59,7 @@ const Main = () => {
             <div className="result-data">
   <img src={assets.gemini_icon} alt="gemini" />
   {loading ? (
-    <div className="loader-pulse">
+    <div className="gemini-loader">
       <span></span>
       <span></span>
       <span></span>
