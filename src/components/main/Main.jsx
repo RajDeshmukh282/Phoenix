@@ -57,17 +57,17 @@ const Main = () => {
               <p>{recentprompts}</p>
             </div>
             <div className="result-data">
-              {loading ? (
-                <div className="gemini-loader">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              ) : (
-                <p dangerouslySetInnerHTML={{ __html: resultdata }}></p>
-              )}
-              <img src={assets.gemini_icon} alt="gemini" />
-            </div>
+  <img src={assets.gemini_icon} alt="gemini" />
+  {loading ? (
+    <div className="gemini-loader">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  ) : (
+    <p dangerouslySetInnerHTML={{ __html: resultdata }}></p>
+  )}
+</div>
           </div>
         )}
 
